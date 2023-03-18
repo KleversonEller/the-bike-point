@@ -1,17 +1,16 @@
-import {Router} from "express";
-
+import { Router } from "express";
 
 import prisma from "../model/prisma.connect";
-// import GroupModel from '../models/group.model';
-// import GroupService from '../services/group.service';
-// import GroupController from '../controllers/group.controller';
+import GroupModel from "../model/group.model";
+import GroupService from "../services/group.service";
+import GroupController from "../controller/group.controller";
 
-// const model = new groupModel(prisma);
-// const service = new groupService(model);
-// const controller = new groupController(service);
+const model = new GroupModel(prisma);
+const service = new GroupService(model);
+const controller = new GroupController(service);
 
 const groupRouter = Router();
 
-// groupRouter.post("/create", async (req, res) => controller.newgroup(req, res));
+groupRouter.post("/create", async (req, res) => controller.newGroup(req, res));
 
 export default groupRouter;

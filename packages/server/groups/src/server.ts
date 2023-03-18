@@ -3,14 +3,14 @@ import cors from 'cors';
 import 'express-async-errors'
 
 import middlewareError from './middleware/error.middleware';
-import groupRouter from './routers/group.routes'
+import groupRouter from './routers/group.routes';
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
-app.use(groupRouter);
+app.use('/group', groupRouter);
 
 app.use(middlewareError);
 
