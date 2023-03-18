@@ -14,5 +14,5 @@ model user {
     id    String @id @default(uuid())
     email String @unique
     pass  String
-    nick  String @unique
+    name  String @unique
 }
