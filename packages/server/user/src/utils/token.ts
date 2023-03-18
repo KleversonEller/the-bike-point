@@ -15,7 +15,8 @@ type jwtPayload = {
 
 export type TokenPayload = {
 	id: string;
-	accountId: string;
+    name: string;
+	email: string;
 };
 
 const secret = process.env.JWT_SECRET as string;
@@ -29,7 +30,7 @@ declare global {
 }
 
 export default class Token {
-	static newToken(data: string | TokenPayload): string {
+	static newToken(data: TokenPayload): string {
 		const config: jwt.SignOptions = {
 			algorithm: 'HS256',
 			expiresIn: '1d',
