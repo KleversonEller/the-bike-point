@@ -12,5 +12,6 @@ const controller = new UserController(service);
 const userRouter = Router();
 
 userRouter.post("/create", async (req, res) => controller.newUser(req, res));
+userRouter.post("/login", async (req, res) => controller.login(req, res));
 
 export default userRouter;
