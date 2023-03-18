@@ -14,7 +14,7 @@ model group {
     id    String @id @default(uuid())
     idUser String @unique
     groupName    String @unique
-    phone   Int?
+    phone   BigInt?
     whatsapp String?
     website String?
     discord String?
