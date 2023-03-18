@@ -4,6 +4,7 @@ import { StatusCodes } from 'http-status-codes';
 import PersonalError from '../utils/personal.error';
 
 import INewUser from '../interfaces/user.interface';
+import ILogin from '../interfaces/user.interface';
 
 export default class ValidUser {
     static validNewUser(data: INewUser): void {
@@ -20,6 +21,20 @@ export default class ValidUser {
             name: Joi.string().required().max(20).messages({
                 'string.max': 'O nome deve ter no máximo 20 caracteres',
                 'any.required': 'O nome é um campo obrigatório',
+            })
+        }).validate(data);
+
+        if(error) throw new PersonalError(StatusCodes.METHOD_NOT_ALLOWED, error.message); // Error 405
+    };
+
+    static validLogin(data: ILogin): void {
+        const {error} = Joi. object({
+            email: Joi.string().required().email().messages({
+                'string.email': 'Esse não é um e-mail valido',
+                'any.required': 'O e-mail é um campo obrigatório',
+            }),
+            pass: Joi.string().required().messages({
+                'any.required': 'A senha é um campo obrigatório',
             })
         }).validate(data);
 
