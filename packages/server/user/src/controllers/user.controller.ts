@@ -12,6 +12,6 @@ export default class UserController {
     public async newUser(req: Request, res: Response): Promise<Response> {
         const create = await this._service.newUser(req.body);
 
-        return res.status(StatusCodes.CREATED).json({message: create});
+        return res.status(StatusCodes.CREATED).json({message: create}); // Code 201
     }
 }

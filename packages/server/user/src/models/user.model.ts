@@ -9,7 +9,7 @@ export default class UserModel {
         this._db = connect;
     }
 
-    public async newUser(data: user): Promise<void | string> {
+    public async newUser(data: user): Promise< string> {
         try {
             await this._db.user.create({data});
             return "Usuário criado com sucesso !"
