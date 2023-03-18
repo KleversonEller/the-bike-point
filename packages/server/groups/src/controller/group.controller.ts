@@ -13,6 +13,6 @@ export default class GroupController {
     public async newGroup(req: Request, res: Response): Promise<Response> {
         const create = await this._service.newGroup(req.body);
 
-        return res.status(StatusCodes.CREATED).json({message: create});
+        return res.status(StatusCodes.CREATED).json({message: create}); // Code 201
     }
 }

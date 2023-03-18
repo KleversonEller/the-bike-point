@@ -9,7 +9,7 @@ export default class GroupModel{
         this._db = connect;
     }
 
-    public async newGroup(data: group): Promise<void | string> {
+    public async newGroup(data: group): Promise<string> {
         try {
             await this._db.group.create({data});
 
