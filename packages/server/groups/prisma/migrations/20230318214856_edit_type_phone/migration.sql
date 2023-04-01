@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "group" ALTER COLUMN "phone" SET DATA TYPE BIGINT;
