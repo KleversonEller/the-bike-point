@@ -17,4 +17,10 @@ export default class GroupService {
 
         return create as string
     }
+
+    public async getAllGroups(): Promise<group[]> {
+        const groups = await this._model.getAllGroups();
+
+        return groups;
+    }
 }

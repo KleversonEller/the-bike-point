@@ -18,9 +18,19 @@ export default class GroupModel{
             if(error instanceof Prisma.PrismaClientKnownRequestError) {
                 const tag = error.meta?.target
 
-                throw new PersonalError(StatusCodes.UNAUTHORIZED, `Esse ${tag} já está em uso!`) //Error 401
+                throw new PersonalError(StatusCodes.UNAUTHORIZED, `Já existe um grupo com o nome ${tag}`) //Error 401
             }
             throw error // Error 500
+        }
+    }
+
+    public async getAllGroups(): Promise<group[]> {
+        try {
+            const groups = await this._db.group.findMany();
+
+            return groups
+        } catch (error) {
+            throw new PersonalError(StatusCodes.BAD_REQUEST, 'Nenhum grupo encontrado !') // Erro 400
         }
     }
 }
